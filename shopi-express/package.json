@@ -1,0 +1,19 @@
+{
+  "name": "shopi-express",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js",
+    "create:migration": "sequelize migration:generate",
+    "migrate": "sequelize db:migrate"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mariadb": "^2.5.3",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "sequelize-cli": "^6.2.0"
+  }
+}
