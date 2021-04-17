@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const sequelize = require('../db');
+const jwt = require('jsonwebtoken');
 
 // Register a new user
 router.post('/signup', async (req, res) => {
@@ -53,9 +54,16 @@ router.post('/login', async (req, res) => {
     return res.status(401).json({ message: 'Invalid credentials' })
   }
 
+  const token = jwt.sign({
+    iss: 'Shopi SAPI de CV',
+    id: user.id
+  }, 'secretkey', {
+    expiresIn: 3600000,
+  });
+
   return res.json({
     message: 'Authenticated',
-    token: 'secret-token',
+    token,
   });
 });
 
