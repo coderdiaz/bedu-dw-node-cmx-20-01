@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const sequelize = require('../db');
 
 const authenticate = (req, res, next) => {
   const { authorization: token } = req.headers;
@@ -7,8 +8,11 @@ const authenticate = (req, res, next) => {
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
-  jwt.verify(token, 'secretkey', (err, decoded) => {
+  jwt.verify(token, 'secretkey', async (err, decoded) => {
     if (err) return res.status(401).json({ message: 'Unauthorized' });
+
+    // console.log(decoded);
+    req.user = await sequelize.models.users.findByPk(decoded.id);
 
     next();
   });
