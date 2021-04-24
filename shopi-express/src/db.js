@@ -2,6 +2,7 @@ const { Sequelize } = require('sequelize');
 
 // Importing models
 const User = require('./models/User');
+const Product = require('./models/Product');
 
 // Database connection
 const sequelize = new Sequelize('shopi', 'root', 'root', {
@@ -14,6 +15,7 @@ const sequelize = new Sequelize('shopi', 'root', 'root', {
 // Getting models
 const models = [
   User,
+  Product,
 ];
 
 // Registering models in Sequelize

@@ -6,5 +6,6 @@ const authenticate = require('../middlewares/authetication');
 // Add the required routes
 router.use('/auth', require('./auth'));
 router.use('/users', authenticate, require('./users'));
+router.use('/products', authenticate, require('./products'));
 
 module.exports = router;
